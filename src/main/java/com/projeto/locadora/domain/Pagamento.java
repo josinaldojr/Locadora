@@ -1,24 +1,23 @@
 package com.projeto.locadora.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Estado implements Serializable{
+import com.projeto.locadora.domain.enums.EstadoPagamento;
+
+public class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private String nome;
+	private Integer estado;
+	private Locacao locacao;
 	
-	private List<Cidade> cidades = new ArrayList<>();
-	
-	public Estado() {}
+	public Pagamento() {}
 
-	public Estado(Integer id, String nome, List<Cidade> cidades) {
+	public Pagamento(Integer id, EstadoPagamento estado, Locacao locacao) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.cidades = cidades;
+		this.estado = estado.getCod();
+		this.locacao = locacao;
 	}
 
 	public Integer getId() {
@@ -29,20 +28,20 @@ public class Estado implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public Integer getEstado() {
+		return estado;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setEstado(Integer estado) {
+		this.estado = estado;
 	}
 
-	public List<Cidade> getCidades() {
-		return cidades;
+	public Locacao getLocacao() {
+		return locacao;
 	}
 
-	public void setCidades(List<Cidade> cidades) {
-		this.cidades = cidades;
+	public void setLocacao(Locacao locacao) {
+		this.locacao = locacao;
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class Estado implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Estado other = (Estado) obj;
+		Pagamento other = (Pagamento) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

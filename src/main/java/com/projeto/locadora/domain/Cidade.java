@@ -1,6 +1,8 @@
 package com.projeto.locadora.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cidade implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -10,6 +12,8 @@ public class Cidade implements Serializable{
 	
 	private Estado estado;
 	
+	private List<Bairro> bairro = new ArrayList<>();
+	
 	public Cidade() {}
 
 	public Cidade(Integer id, String nome, Estado estado) {
@@ -17,6 +21,14 @@ public class Cidade implements Serializable{
 		this.id = id;
 		this.nome = nome;
 		this.estado = estado;
+	}
+	
+	public List<Bairro> getbairro() {
+		return bairro;
+	}
+	
+	public void setBairro(List<Bairro> bairro) {
+		this.bairro = bairro;
 	}
 
 	public Integer getId() {
